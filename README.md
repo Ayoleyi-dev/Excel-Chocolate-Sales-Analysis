@@ -11,9 +11,9 @@ This project is a complete analysis of chocolate sales data, performed entirely 
 
 I used Pivot Tables to analyze the data, and here are my main findings:
 
-* **Top Product:** [Write your #1 product here]
-* **Top Market:** [Write your #1 country here]
-* **Busiest Month:** [Write the month with the most sales here]
+* **Top Product:** Smooth silky salty
+* **Top Markets:** USA, India, Uk.
+* **Busiest Month:** January
 
 ## Tools Used
 
