@@ -1,0 +1,31 @@
+name: Rebuild upgraded workbook
+
+on:
+  push:
+    branches: [portfolio-upgrade]
+    paths:
+      - ".workbook_upload2/READY"
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: portfolio-upgrade
+      - name: Reconstruct workbook
+        shell: bash
+        run: |
+          cat .workbook_upload2/part_* | tr -d '\n' | base64 --decode > "chocolate sales analysis.xlsx"
+          rm -rf .workbook_upload2 .workbook_upload
+      - name: Commit workbook
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Replace workbook with upgraded Excel analysis"
+          git push origin portfolio-upgrade
